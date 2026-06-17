@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barney Stinson — Suit Up</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0f;
+      color: #f0f0f0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    #app {
+      width: 100%;
+      max-width: 640px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      background: #13131a;
+      border-radius: 16px;
+      border: 1px solid #1e1e2e;
+      overflow: hidden;
+    }
+
+    #header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-bottom: 1px solid #1e1e2e;
+      background: #0f0f18;
+    }
+
+    .avatar-lg {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #185FA5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #E6F1FB;
+      flex-shrink: 0;
+    }
+
+    #header-info { flex: 1; }
+    #header-info h1 { font-size: 15px; font-weight: 600; color: #f0f0f0; }
+    #header-info p { font-size: 12px; color: #666; margin-top: 2px; }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #0C447C;
+      color: #B5D4F4;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3B6D11;
+    }
+
+    #chat-window {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    #chat-window::-webkit-scrollbar { width: 4px; }
+    #chat-window::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 4px; }
+
+    .msg-row { display: flex; gap: 10px; align-items: flex-start; }
+    .msg-row.user { flex-direction: row-reverse; }
+
+    .avatar-sm {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #185FA5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: #E6F1FB;
+      flex-shrink: 0;
+    }
+
+    .bubble {
+      padding: 10px 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 78%;
+      border-radius: 4px 14px 14px 14px;
+      background: #1e1e2e;
+      color: #e0e0e0;
+    }
+
+    .bubble.user {
+      background: #185FA5;
+      border-radius: 14px 4px 14px 14px;
+      color: #fff;
+    }
+
+    #typing {
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .typing-bubble {
+      padding: 12px 16px;
+      background: #1e1e2e;
+      border-radius: 4px 14px 14px 14px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #555;
+      display: inline-block;
+      animation: bounce 1.2s infinite;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+    #quick-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0 20px 12px;
+    }
+
+    .quick-btn {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid #2a2a3a;
+      background: transparent;
+      color: #888;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .quick-btn:hover { background: #1e1e2e; color: #ccc; }
+
+    #input-area {
+      padding: 12px 20px 16px;
+      border-top: 1px solid #1e1e2e;
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    #user-input {
+      flex: 1;
+      resize: none;
+      font-size: 14px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #2a2a3a;
+      background: #0f0f18;
+      color: #f0f0f0;
+      font-family: inherit;
+      line-height: 1.5;
+      outline: none;
+    }
+    #user-input:focus { border-color: #185FA5; }
+    #user-input::placeholder { color: #444; }
+
+    #send-btn {
+      height: 64px;
+      padding: 0 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      background: #185FA5;
+      border: none;
+      color: #fff;
+      transition: background 0.15s;
+    }
+    #send-btn:hover { background: #0C447C; }
+    #send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div id="header">
+    <div class="avatar-lg">BS</div>
+    <div id="header-info">
+      <h1>Barney Stinson</h1>
+      <p>Suits. Schemes. Legend — wait for it — ary.</p>
+    </div>
+    <span class="badge">Suited Up</span>
+    <div class="status-dot"></div>
+  </div>
+
+  <div id="chat-window">
+    <div class="msg-row">
+      <div class="avatar-sm">BS</div>
+      <div class="bubble">Suit up. You've reached Barney Stinson — lawyer, legend, and the best wingman you'll ever have. Ask me anything. This is going to be legen — wait for it — dary!</div>
+    </div>
+  </div>
+
+  <div id="typing">
+    <div class="avatar-sm" style="margin-left:20px;">BS</div>
+    <div class="typing-bubble">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+  </div>
+
+  <div id="quick-btns">
+    <button class="quick-btn" onclick="quickAsk('How do I impress someone at a bar?')">Dating advice?</button>
+    <button class="quick-btn" onclick="quickAsk('Give me life advice')">Life advice?</button>
+    <button class="quick-btn" onclick="quickAsk('How do I become awesome?')">How to be awesome?</button>
+    <button class="quick-btn" onclick="quickAsk('Tell me about the Bro Code')">The Bro Code?</button>
+  </div>
+
+  <div id="input-area">
+    <textarea id="user-input" rows="2" placeholder="Ask Barney anything..."></textarea>
+    <button id="send-btn" onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  const BACKEND = 'https://barney-backend-dxhq.onrender.com';
+  let history = [];
+
+  async function sendMessage() {
+    const input = document.getElementById('user-input');
+    const btn = document.getElementById('send-btn');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+    btn.disabled = true;
+    appendMsg('user', msg);
+    history.push({ role: 'user', content: msg });
+    setTyping(true);
+    try {
+      const res = await fetch(BACKEND + '/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+      const data = await res.json();
+      const reply = data.reply || "Even legends hit a snag. Challenge accepted — try again.";
+      history.push({ role: 'assistant', content: reply });
+      setTyping(false);
+      appendMsg('barney', reply);
+    } catch(e) {
+      setTyping(false);
+      appendMsg('barney', "Server might be waking up — wait 30 seconds and try again. Legends are patient.");
+    }
+    btn.disabled = false;
+  }
+
+  function quickAsk(text) {
+    document.getElementById('user-input').value = text;
+    sendMessage();
+  }
+
+  function appendMsg(sender, text) {
+    const win = document.getElementById('chat-window');
+    const row = document.createElement('div');
+    row.className = 'msg-row' + (sender === 'user' ? ' user' : '');
+    if (sender === 'barney') {
+      const av = document.createElement('div');
+      av.className = 'avatar-sm';
+      av.textContent = 'BS';
+      row.appendChild(av);
+    }
+    const bub = document.createElement('div');
+    bub.className = 'bubble' + (sender === 'user' ? ' user' : '');
+    bub.textContent = text;
+    row.appendChild(bub);
+    win.appendChild(row);
+    win.scrollTop = win.scrollHeight;
+  }
+
+  function setTyping(show) {
+    const t = document.getElementById('typing');
+    t.style.display = show ? 'flex' : 'none';
+    if (show) document.getElementById('chat-window').scrollTop = 99999;
+  }
+
+  document.getElementById('user-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+</script>
+
+</body>
+</html>

@@ -5,28 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>HIMYM — The Gang</title>
 
-
-
-
-
-
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #f0f0f0; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /* ── TOP NAV (mobile character selector) ── */
     #top-nav {
@@ -37,96 +18,6 @@
       gap: 8px;
       overflow-x: auto;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       flex-shrink: 0;
       scrollbar-width: none;
     }
@@ -134,246 +25,22 @@
 
     .nav-btn {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       display: flex;
       flex-direction: column;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       align-items: center;
-
-
-
-
-
-
-
-
-
-
-
-
 
       gap: 4px;
       padding: 6px 10px;
       border-radius: 10px;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       border: none;
       background: transparent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       cursor: pointer;
 
       flex-shrink: 0;
       min-width: 56px;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
     .nav-btn.active { background: #1a1a28; }
@@ -384,10 +51,6 @@
     /* ── DESKTOP LAYOUT ── */
     #layout { display: flex; flex: 1; min-height: 0; }
 
-
-
-
-
     #sidebar {
       width: 200px;
       flex-shrink: 0;
@@ -397,21 +60,6 @@
       flex-direction: column;
       padding: 16px 0;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
     #sidebar h2 { font-size: 11px; font-weight: 600; color: #444; text-transform: uppercase; letter-spacing: 1px; padding: 0 16px 12px; }
 
@@ -420,12 +68,6 @@
       padding: 10px 16px; cursor: pointer; border: none;
       background: transparent; width: 100%; text-align: left;
       transition: background 0.15s; border-left: 3px solid transparent;
-
-
-
-
-
-
 
     }
     .char-btn:hover { background: #1a1a28; }
@@ -438,38 +80,10 @@
     /* ── MAIN CHAT ── */
     #main { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 
-
-
-
-
-
-
-
     #chat-header {
       display: flex; align-items: center; gap: 12px;
       padding: 12px 16px; border-bottom: 1px solid #1e1e2e;
       background: #0f0f18; flex-shrink: 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
     #header-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #fff; flex-shrink: 0; }
@@ -482,21 +96,6 @@
       display: flex; flex-direction: column; gap: 12px;
       min-height: 0;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
     #chat-window::-webkit-scrollbar { width: 4px; }
     #chat-window::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 4px; }
@@ -508,38 +107,15 @@
     .bubble.user { background: #185FA5; border-radius: 14px 4px 14px 14px; color: #fff; }
     .char-label { font-size: 11px; color: #444; margin-bottom: 2px; padding-left: 36px; }
 
-
-
-
-
-
-
-
     #typing { display: none; align-items: center; gap: 8px; padding: 0 16px 8px; }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: #555; display: inline-block; animation: bounce 1.2s infinite; }
     .dot:nth-child(2) { animation-delay: 0.2s; }
     .dot:nth-child(3) { animation-delay: 0.4s; }
     @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     #input-area {
       padding: 10px 12px 12px; border-top: 1px solid #1e1e2e;
       display: flex; gap: 8px; align-items: flex-end; flex-shrink: 0;
-
-
-
 
     }
     #user-input {
@@ -556,13 +132,6 @@
       display: flex; align-items: center; justify-content: center;
       transition: opacity 0.15s;
 
-
-
-
-
-
-
-
     }
     #send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
@@ -573,26 +142,6 @@
       .bubble { max-width: 88%; font-size: 13px; }
       #chat-header { padding: 10px 12px; }
       #chat-window { padding: 12px; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
   </style>
@@ -656,13 +205,6 @@
         <div id="header-name">Barney Stinson</div>
         <div id="header-status">Suits. Schemes. Legendary.</div>
 
-
-
-
-
-
-
-
       </div>
       <div class="online-dot"></div>
     </div>
@@ -679,31 +221,6 @@
       <div class="msg-avatar" id="typing-avatar" style="background:#185FA5">BS</div>
       <div style="background:#1e1e2e;padding:10px 14px;border-radius:4px 14px 14px 14px;">
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       </div>
     </div>
@@ -725,172 +242,11 @@ const CHARS = {
   lily:     { name: 'Lily Aldrin',        initials: 'LA', color: '#8B6914', status: 'Teacher. Secret mastermind.',      placeholder: 'Message Lily...'     },
   marshall: { name: 'Marshall Eriksen',   initials: 'ME', color: '#2E6B2E', status: 'Lawyer. True optimist.',           placeholder: 'Message Marshall...' },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
 
 const GREETINGS = {
-@@ -237,33 +707,156 @@
 let histories = { barney: [], ted: [], robin: [], lily: [], marshall: [] };
 let initialized = { barney: true, ted: false, robin: false, lily: false, marshall: false };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function switchChar(char) {
   if (char === currentChar) return;
@@ -914,27 +270,15 @@ function switchChar(char) {
   document.getElementById('typing-avatar').style.background = info.color;
   document.getElementById('typing-avatar').textContent = info.initials;
 
-
-
-
-
-
-
-
-
-
-
   const win = document.getElementById('chat-window');
   win.innerHTML = '';
   addGreeting(char);
   if (initialized[char]) restoreHistory(char);
   initialized[char] = true;
 
-
   document.getElementById('user-input').focus();
 }
 
-@@ -275,9 +868,10 @@
   label.textContent = info.name.split(' ')[0];
   win.appendChild(label);
   const row = document.createElement('div');
@@ -945,15 +289,10 @@ function switchChar(char) {
 }
 
 function restoreHistory(char) {
-@@ -324,33 +918,38 @@
   const row = document.createElement('div');
   if (side === 'user') {
     row.className = 'msg-row user';
     row.innerHTML = `<div class="bubble user">${text}</div>`;
-
-
-
-
 
   } else {
     const label = document.createElement('div');
